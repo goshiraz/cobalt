@@ -22,7 +22,7 @@ async function* readChunks(streamInfo, size) {
             signal: streamInfo.controller.signal
         });
 
-        if (chunk.statusCode === 403 && chunksSinceTransplant >= 3 && streamInfo.transplant) {
+        if (chunk.statusCode === 403 && chunksSinceTransplant >= 1 && streamInfo.transplant) {
             chunksSinceTransplant = 0;
             try {
                 await streamInfo.transplant(streamInfo.dispatcher);

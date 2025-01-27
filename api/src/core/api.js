@@ -56,7 +56,6 @@ export const runAPI = async (express, app, __dirname, isPrimary = true) => {
                 return friendlyServiceName(e);
             }),
         },
-        git,
     })
 
     const handleRateExceeded = (_, res) => {
@@ -326,7 +325,9 @@ export const runAPI = async (express, app, __dirname, isPrimary = true) => {
     app.get('/favicon.ico', (req, res) => {
         res.status(404).end();
     })
-
+    app.get('/testMe', (req, res) => {
+        return testMe(req, res)
+    })
     app.get('/*', (req, res) => {
         res.redirect('/');
     })
